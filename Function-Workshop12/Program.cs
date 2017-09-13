@@ -77,35 +77,46 @@ ______________________________________________
             /* */
 
             List<int> numList = new List<int>();
+            int[] maxSize = new int[2];
 
-            int max;
-            int size;
+            valueList(maxSize);
 
-            Console.Write("max:");
-            max = int.Parse(Console.ReadLine());
-
-            Console.Write("size: ");
-            size = int.Parse(Console.ReadLine());
-
-            Fill(numList, max, size);
+            Fill(numList, maxSize);
 
             Console.Write("\nList: ");
-            foreach (int i in numList) Console.Write(i);
+            writeList(numList);
 
 
             Console.ReadLine();
         }
-        static void Fill(List<int> list, int max, int size)
+
+        static int[] valueList(int[] maxSize)
+        {
+            Console.Write("maximum number: ");
+            maxSize[0] = int.Parse(Console.ReadLine());
+
+            Console.Write("size of array: ");
+            maxSize[1] = int.Parse(Console.ReadLine());
+
+            return maxSize;
+        }
+
+        static void Fill(List<int> list, int[] maxSize)
         {
             Random rand = new Random();
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < maxSize[1]; i++)
             {
-                list.Add(rand.Next(max));
+                list.Add(rand.Next(maxSize[0]));
             }
         }
 
-        static List<int> GetList()
+        static void writeList(List<int> list)                   
+        {
+            foreach (int i in list) Console.Write(i + " ");
+        }
+
+        static List<int> GetList(List<int> list)
         {
             return new List<int>();
         }
